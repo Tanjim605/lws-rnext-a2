@@ -7,8 +7,18 @@ export default function Item({
   name,
   price,
   totalPrice,
-  setPrice,
+  setTotalPrice,
+  totalItem,
+  setTotalItem,
 }) {
+  function handlePlus() {
+    setTotalPrice(totalPrice + price);
+    totalItem++;
+  }
+  function handleMinus() {
+    setTotalPrice(totalPrice - price);
+    totalItem--;
+  }
   return (
     <div className="bg-gray-700 bg-opacity-30 rounded-md p-3 mb-3 flex justify-between items-center hover:bg-opacity-40 transition-all duration-300">
       <div className="flex items-center">
@@ -23,14 +33,14 @@ export default function Item({
 
       <div className="flex gap-2">
         <button
-          onClick={() => setPrice(totalPrice + price)}
+          onClick={handlePlus}
           className="w-8 h-8 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-300"
         >
           <PlusButtonSvg />
         </button>
 
         <button
-          onClick={() => setPrice(totalPrice - price)}
+          onClick={handleMinus}
           className="w-8 h-8 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-300"
         >
           <MinusButtonSvg />

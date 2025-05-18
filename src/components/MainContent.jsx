@@ -1,11 +1,7 @@
 import { useState } from "react";
-import ChooseItems from "./ChooseItems";
-import CustomerNameInput from "./CustomerNameInput";
-import OrderAndReport from "./OrderAndReport";
-import PlaceOrderButton from "./PlaceOrderButton";
 import CreateOrder from "./CreateOrder";
-import OrderSummary from "./OrderSummary";
 import OrderReport from "./OrderReport";
+import OrderSummary from "./OrderSummary";
 
 export default function MainContent() {
   const itemData = [
@@ -92,17 +88,45 @@ export default function MainContent() {
       status: "PENDING",
     },
   ];
-
-  const [totalPrice, setPrice] = useState(0);
+  let totalItem = 0;
+  const [totalPrice, setTotalPrice] = useState(0);
   const [totalPending, setPending] = useState(7);
   const [totalDelivered, setDelivered] = useState(1);
+  const [orderTable, setOrderData] = useState(orderData);
+
+  // setOrderData(console.log("setting order"));
+  function handleOrder() {
+    let itemCount = totalItem > 0 ? totalItem : 0;
+    setOrderData([
+      ...orderTable,
+      {
+        id: 21,
+        customerName: "Sumit Saha",
+        items: itemCount,
+        amount: totalPrice,
+        status: "PENDING",
+      },
+    ]);
+    setPending(totalPending + 1);
+    setTotalPrice(0);
+  }
 
   return (
     <>
-      <CreateOrder itemData={itemData} />
-      <div class="md:col-span-2 h-[calc(100vh_-_130px)]">
-        <OrderSummary />
-        <OrderReport orderData={orderData} />
+      <CreateOrder
+        totalItem={totalItem}
+        totalPrice={totalPrice}
+        setTotalPrice={setTotalPrice}
+        itemData={itemData}
+        orderTable={orderData}
+        handlePlaceOrder={handleOrder}
+      />
+      <div className="md:col-span-2 h-[calc(100vh_-_130px)]">
+        <OrderSummary
+          totalPending={totalPending}
+          totalDelivered={totalDelivered}
+        />
+        <OrderReport orderTable={orderTable} />
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import Table from "./Table";
 
-export default function OrderReport({orderTable, onDelete}) {
+export default function OrderReport({ orderTable, onDelete, onDeliver }) {
   return (
     <div>
       <div className="flex justify-between">
@@ -28,7 +28,11 @@ export default function OrderReport({orderTable, onDelete}) {
           </select>
         </div>
       </div>
-      <Table orderTable={orderTable} onDelete={onDelete}/>
+      <Table
+        orderTable={orderTable}
+        onDelete={onDelete}
+        onDeliver={onDeliver}
+      />
     </div>
   );
 }

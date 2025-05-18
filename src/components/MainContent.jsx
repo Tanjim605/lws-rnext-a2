@@ -88,7 +88,7 @@ export default function MainContent() {
       status: "PENDING",
     },
   ];
-  let id=19;
+  let id = 19;
   // let totalItem = 0;
   const [totalItem, setTotalItem] = useState(0);
   const [customerName, setCustomerName] = useState("tanjim Demo");
@@ -119,6 +119,18 @@ export default function MainContent() {
   function handleDelete(orderId) {
     const orderAfterDelete = orderTable.filter((order) => order.id !== orderId);
     setOrderData(orderAfterDelete);
+    setPending(totalPending - 1);
+  }
+
+  function handleDeliver(orderId) {
+    const orderAfterDeliver = orderTable.map((order) => {
+      if (order.id == orderId) {
+        order.status = "DELIVERED";
+      }
+      return order;
+    });
+    setOrderData(orderAfterDeliver);
+    setDelivered(totalDelivered + 1);
   }
 
   return (
@@ -139,7 +151,11 @@ export default function MainContent() {
           totalPending={totalPending}
           totalDelivered={totalDelivered}
         />
-        <OrderReport orderTable={orderTable} onDelete={handleDelete}/>
+        <OrderReport
+          orderTable={orderTable}
+          onDelete={handleDelete}
+          onDeliver={handleDeliver}
+        />
       </div>
     </>
   );

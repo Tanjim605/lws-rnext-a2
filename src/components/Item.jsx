@@ -13,11 +13,13 @@ export default function Item({
 }) {
   function handlePlus() {
     setTotalPrice(totalPrice + price);
-    totalItem++;
+    setTotalItem(totalItem + 1);
+    // totalItem++;
   }
   function handleMinus() {
     setTotalPrice(totalPrice - price);
-    totalItem--;
+    setTotalItem(totalItem - 1);
+    // totalItem--;
   }
   return (
     <div className="bg-gray-700 bg-opacity-30 rounded-md p-3 mb-3 flex justify-between items-center hover:bg-opacity-40 transition-all duration-300">

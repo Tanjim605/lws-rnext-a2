@@ -88,7 +88,9 @@ export default function MainContent() {
       status: "PENDING",
     },
   ];
-  let totalItem = 0;
+  // let totalItem = 0;
+  const [totalItem, setTotalItem] = useState(0);
+  const [customerName, setCustomerName] = useState("tanjim Demo");
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalPending, setPending] = useState(7);
   const [totalDelivered, setDelivered] = useState(1);
@@ -98,27 +100,31 @@ export default function MainContent() {
   function handleOrder() {
     let itemCount = totalItem > 0 ? totalItem : 0;
     setOrderData([
-      ...orderTable,
       {
         id: 21,
-        customerName: "Sumit Saha",
+        customerName: customerName,
         items: itemCount,
         amount: totalPrice,
         status: "PENDING",
       },
+      ...orderTable,
     ]);
     setPending(totalPending + 1);
     setTotalPrice(0);
+    setTotalItem(0);
   }
 
   return (
     <>
       <CreateOrder
+        customerName={customerName}
+        setCustomerName={setCustomerName}
         totalItem={totalItem}
+        setTotalItem={setTotalItem}
         totalPrice={totalPrice}
         setTotalPrice={setTotalPrice}
         itemData={itemData}
-        orderTable={orderData}
+        orderTable={orderTable}
         handlePlaceOrder={handleOrder}
       />
       <div className="md:col-span-2 h-[calc(100vh_-_130px)]">

@@ -1,7 +1,10 @@
 import Item from "./Item";
 
 export default function CreateOrder({
+  customerName,
+  setCustomerName,
   totalItem,
+  setTotalItem,
   itemData,
   totalPrice,
   setTotalPrice,
@@ -11,6 +14,9 @@ export default function CreateOrder({
   {
     if (totalPrice < 0) totalPrice = 0;
   }
+  const handleChange = (evt) => {
+    setCustomerName(evt.target.value);
+  };
   return (
     <div className="bg-cardbg rounded-lg p-6 h-[calc(100vh_-_130px)]">
       <h2 className="text-xl font-bold mb-1">CREATE ORDER</h2>
@@ -20,11 +26,17 @@ export default function CreateOrder({
       </p>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium mb-2">Customer Name</label>
-        <input
-          type="text"
-          className="w-full bg-gray-700 bg-opacity-50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
-        ></input>
+        <form>
+          <label className="block text-sm font-medium mb-2">
+            Customer Name
+          </label>
+          <input
+            name="customerName"
+            type="text"
+            onChange={handleChange}
+            className="w-full bg-gray-700 bg-opacity-50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
+          ></input>
+        </form>
       </div>
 
       <div className="mb-4">
@@ -33,6 +45,7 @@ export default function CreateOrder({
           {itemData.map((item) => (
             <Item
               totalItem={totalItem}
+              setTotalItem={setTotalItem}
               setTotalPrice={setTotalPrice}
               totalPrice={totalPrice}
               name={item.itemName}

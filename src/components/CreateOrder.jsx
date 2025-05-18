@@ -1,14 +1,12 @@
 import Item from "./Item";
 
 export default function CreateOrder({
-  customerName,
   setCustomerName,
   totalItem,
   setTotalItem,
   itemData,
   totalPrice,
   setTotalPrice,
-  orderTable,
   handlePlaceOrder,
 }) {
   {

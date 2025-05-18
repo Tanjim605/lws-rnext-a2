@@ -1,7 +1,6 @@
 import ChooseItems from "./components/ChooseItems";
 import MainContent from "./components/MainContent";
 import Navbar from "./components/Navbar";
-import OrderSummaryCard from "./components/OrderSummaryCard";
 
 export default function App() {
   return (
@@ -10,7 +9,6 @@ export default function App() {
       <MainContent>
         <ChooseItems />
       </MainContent>
-      
     </div>
   );
 }

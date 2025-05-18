@@ -1,0 +1,58 @@
+export const tableData = [
+    {
+        id: 21,
+        customerName: "Sumit Saha",
+        items: 5,
+        amount: 123,
+        status: "PENDING",
+    },
+    {
+        id: 21,
+        customerName: "Akash Ahmed",
+        items: 5,
+        amount: 123,
+        status: "DELIVERED",
+    },
+    {
+        id: 21,
+        customerName: "Saad Hasan",
+        items: 5,
+        amount: 123,
+        status: "PENDING",
+    },
+    {
+        id: 21,
+        customerName: "MD Salahuddin",
+        items: 5,
+        amount: 123,
+        status: "PENDING",
+    },
+    {
+        id: 21,
+        customerName: "Ferdous",
+        items: 5,
+        amount: 123,
+        status: "PENDING",
+    },
+    {
+        id: 21,
+        customerName: "Rafe",
+        items: 5,
+        amount: 123,
+        status: "PENDING",
+    },
+    {
+        id: 21,
+        customerName: "Sarwar",
+        items: 5,
+        amount: 123,
+        status: "PENDING",
+    },
+    {
+        id: 21,
+        customerName: "Obaidul",
+        items: 5,
+        amount: 123,
+        status: "PENDING",
+    },
+];

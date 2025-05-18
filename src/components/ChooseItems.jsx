@@ -1,6 +1,6 @@
 import Item from "./Item";
 
-export default function ChooseItems() {
+export default function ChooseItems({ setPrice, totalPrice }) {
   const itemData = [
     {
       itemName: "Hamburger",
@@ -34,6 +34,8 @@ export default function ChooseItems() {
       <div className="items-container">
         {itemData.map((item) => (
           <Item
+            setPrice={setPrice}
+            totalPrice={totalPrice}
             name={item.itemName}
             price={item.price}
             imageSrc={item.imageSrc}

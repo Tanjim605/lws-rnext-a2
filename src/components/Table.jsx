@@ -1,7 +1,7 @@
 import TableHead from "./TableHead";
 import TableRow from "./TableRow";
 
-export default function Table({orderTable}) {
+export default function Table({orderTable, onDelete}) {
   return (
     <div className="bg-cardbg rounded-lg p-4">
       <div className="reports-container">
@@ -26,7 +26,9 @@ export default function Table({orderTable}) {
                     <span className="text-red-500">{obj.status}</span>
                   </td>
                   <td className="py-3">
-                    <button className="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
+                    <button 
+                    onClick={() => onDelete(obj.id)}
+                    className="bg-gray-800 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
                       Delete
                     </button>
                     <button className="bg-gray-800 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300">

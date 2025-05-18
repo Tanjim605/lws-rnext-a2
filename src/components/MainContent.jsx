@@ -32,62 +32,63 @@ export default function MainContent() {
   ];
   const orderData = [
     {
-      id: 21,
+      id: 11,
       customerName: "Sumit Saha",
       items: 5,
       amount: 123,
       status: "PENDING",
     },
     {
-      id: 21,
+      id: 12,
       customerName: "Akash Ahmed",
       items: 5,
       amount: 123,
       status: "DELIVERED",
     },
     {
-      id: 21,
+      id: 13,
       customerName: "Saad Hasan",
       items: 5,
       amount: 123,
       status: "PENDING",
     },
     {
-      id: 21,
+      id: 14,
       customerName: "MD Salahuddin",
       items: 5,
       amount: 123,
       status: "PENDING",
     },
     {
-      id: 21,
+      id: 15,
       customerName: "Ferdous",
       items: 5,
       amount: 123,
       status: "PENDING",
     },
     {
-      id: 21,
+      id: 16,
       customerName: "Rafe",
       items: 5,
       amount: 123,
       status: "PENDING",
     },
     {
-      id: 21,
+      id: 17,
       customerName: "Sarwar",
       items: 5,
       amount: 123,
       status: "PENDING",
     },
     {
-      id: 21,
+      id: 18,
       customerName: "Obaidul",
       items: 5,
       amount: 123,
       status: "PENDING",
     },
   ];
+  let id=19;
   // let totalItem = 0;
   const [totalItem, setTotalItem] = useState(0);
   const [customerName, setCustomerName] = useState("tanjim Demo");
@@ -101,7 +102,7 @@ export default function MainContent() {
     let itemCount = totalItem > 0 ? totalItem : 0;
     setOrderData([
       {
-        id: 21,
+        id: id,
         customerName: customerName,
         items: itemCount,
         amount: totalPrice,
@@ -112,6 +113,12 @@ export default function MainContent() {
     setPending(totalPending + 1);
     setTotalPrice(0);
     setTotalItem(0);
+    id++;
+  }
+
+  function handleDelete(orderId) {
+    const orderAfterDelete = orderTable.filter((order) => order.id !== orderId);
+    setOrderData(orderAfterDelete);
   }
 
   return (
@@ -132,7 +139,7 @@ export default function MainContent() {
           totalPending={totalPending}
           totalDelivered={totalDelivered}
         />
-        <OrderReport orderTable={orderTable} />
+        <OrderReport orderTable={orderTable} onDelete={handleDelete}/>
       </div>
     </>
   );
